@@ -42,7 +42,7 @@ var posData = [
 ];
 var aLi = document.querySelectorAll('.pic-list li');
 var oBtn = document.querySelector('.btn-wrap');
-var vDomArr = getVirtualArr(aLi);
+var vDomArr = posData;
 var tapMap = {
   'prev': function(){
     vDomArr.push(vDomArr.shift());
@@ -61,9 +61,9 @@ oBtn.addEventListener('click',function(e){
     }
   }
 })
-function translate(translateTarget){
-  posData.forEach(function(item, idx, arr){
-    animate(translateTarget[idx],item);
+function translate(){
+  vDomArr.forEach(function(item, idx, arr){
+    animate(aLi[idx],item);
   });
 }
 function animate(ele,json,callback){
@@ -94,11 +94,4 @@ function animate(ele,json,callback){
       callback && callback();
     }
   });
-}
-function getVirtualArr(nodeList){
-  var newArr = [];
-  for (var i = 0, len = nodeList.length; i<len; i++){
-    newArr[i] = nodeList[i];
-  }
-  return newArr;
 }
