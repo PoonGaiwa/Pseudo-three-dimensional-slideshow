@@ -42,13 +42,12 @@ var posData = [
 ];
 var aLi = document.querySelectorAll('.pic-list li');
 var oBtn = document.querySelector('.btn-wrap');
-var vDomArr = posData;
 var tapMap = {
   'prev': function(){
-    vDomArr.push(vDomArr.shift());
+    posData.push(posData.shift());
   },
   'next': function(){
-    vDomArr.unshift(vDomArr.pop());
+    posData.unshift(posData.pop());
   }
 }
 translate(aLi);
@@ -62,7 +61,7 @@ oBtn.addEventListener('click',function(e){
   }
 })
 function translate(){
-  vDomArr.forEach(function(item, idx, arr){
+  posData.forEach(function(item, idx, arr){
     animate(aLi[idx],item);
   });
 }
